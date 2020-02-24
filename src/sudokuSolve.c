@@ -9,7 +9,6 @@
 
 uint16_t blankCellRow;
 uint16_t blankCellColumn;
-int attempts = 0;
 
 bool getBlankCells(uint16_t board[boardSize][boardSize]);
 
@@ -117,17 +116,19 @@ void stdOutBoard(uint16_t board[boardSize][boardSize])
     }
 }
 
+
+
 int main(void)
 {
-    uint16_t board[9][9] = {{8, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 3, 6, 0, 0, 0, 0, 0},
-                            {0, 7, 0, 0, 9, 0, 2, 0, 0},
-                            {0, 5, 0, 0, 0, 7, 0, 0, 0},
-                            {0, 0, 0, 0, 4, 5, 7, 0, 0},
-                            {0, 0, 0, 1, 0, 0, 0, 3, 0},
-                            {0, 0, 1, 0, 0, 0, 0, 6, 8},
-                            {0, 0, 8, 5, 0, 0, 0, 1, 0},
-                            {0, 9, 0, 0, 0, 0, 4, 0, 0}};
+    uint16_t board[9][9];
+    for (size_t i = 0; i < 9; i++)
+    {
+        for (size_t j = 0; j < 9; j++)
+        {
+            printf("Enter element [%lu, %lu] : ",i+1,j+1);
+            scanf("%hu",&board[i][j]);
+        }
+    }
 
     clock_t timeBegin = clock();
 
@@ -143,8 +144,7 @@ int main(void)
     clock_t timeEnd = clock();
     double execTime = (double)(timeEnd - timeBegin) / CLOCKS_PER_SEC;
     
-    printf("Time to solve: %f\n", execTime);
-    printf("Took %d attemps\n", attempts);
+    printf("\nTime to solve: %f\n", execTime);
 
     return 0;
 }
