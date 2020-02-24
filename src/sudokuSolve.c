@@ -16,7 +16,6 @@ bool valuePossible(uint16_t board[boardSize][boardSize], uint16_t row, uint16_t 
 
 bool solveBoard(uint16_t board[boardSize][boardSize]) 
 {   
-    attempts += 1;
     if (!getBlankCells(board))
     {
         return true;
